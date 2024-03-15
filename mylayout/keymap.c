@@ -2,6 +2,9 @@
 #include "version.h"
 #define MOON_LED_LEVEL LED_LEVEL
 
+#include "features/achordion.h"
+
+
 enum custom_keycodes {
   RGB_SLD = ML_SAFE_RANGE,
   HSV_0_255_255,
@@ -158,7 +161,9 @@ bool rgb_matrix_indicators_user(void) {
   return true;
 }
 
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {  
+  if (!process_achordion(keycode, record)) { return false; }
+  
   switch (keycode) {
 
     case RGB_SLD:
@@ -293,3 +298,18 @@ tap_dance_action_t tap_dance_actions[] = {
         [DANCE_0] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_0, dance_0_finished, dance_0_reset),
         [DANCE_1] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_1, dance_1_finished, dance_1_reset),
 };
+
+void matrix_scan_user(void) {
+    achordion_task();
+}
+
+uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
+  switch (tap_hold_keycode) {
+    case KC_SPACE:
+    case KC_TAB:
+      return 0;  // Bypass Achordion for these keys.
+  }
+
+  // TODO: disabled because it's delaying layer switch
+  return 0;  // Otherwise use a timeout of 800 ms.
+}
