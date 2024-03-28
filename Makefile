@@ -1,7 +1,7 @@
 QMK_REPO ?= zsa/qmk_firmware
 QMK_BRANCH ?= firmware23
 
-# TODO: support different keyboards
+# TODO: support different keyboards, and/or add everything "static" to subrepostitory that people can fork
 
 .PHONY: build
 build: qmk_setup
