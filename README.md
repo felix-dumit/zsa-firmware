@@ -1,6 +1,4 @@
-# moonlander keymap
+# Orxy + Custom
 
-This is my keymap for the moonlander. I keep it in GitHub so I can leverage GHA
-to build it, and I can get firmware upgrades proposed and tested via
-Dependabot.
+This allows to edit most configs in oryx, and apply any custom patches done in code, see the Makefile for available options
 
