@@ -1,6 +1,7 @@
 #include QMK_KEYBOARD_H
 #include "version.h"
 #define MOON_LED_LEVEL LED_LEVEL
+#define ML_SAFE_RANGE SAFE_RANGE
 
 #include "features/achordion.h"
 
@@ -132,6 +133,9 @@ void set_layer_color(int layer) {
 }
 
 bool rgb_matrix_indicators_user(void) {
+  if (rawhid_state.rgb_control) {
+      return false;
+  }
   if (keyboard_config.disable_layer_led) { return false; }
   switch (biton32(layer_state)) {
     case 1:
