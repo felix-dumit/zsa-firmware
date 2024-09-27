@@ -22,4 +22,4 @@ git add .
 git commit -a -m "[Oryx] $TITLE" -m "$HASH_ID"
 # git checkout dev
 git checkout main
-git cherry-pick oryx
+git cherry-pick oryx --empty drop
