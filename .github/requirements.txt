@@ -30,7 +30,9 @@ milc==1.9.0
 pillow==10.2.0
     # via qmk
 platformdirs==4.3.6
-    # via milc
+    # via
+    #   milc
+    #   qmk
 pygments==2.15.1
     # via qmk
 pyrsistent==0.19.3
@@ -39,7 +41,7 @@ pyserial==3.5
     # via qmk
 pyusb==1.2.1
     # via qmk
-qmk==1.1.8
+qmk==1.2.0
     # via -r requirements.in
 six==1.16.0
     # via halo
